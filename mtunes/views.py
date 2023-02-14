@@ -6,6 +6,11 @@ from django.shortcuts import redirect
 from django.db.models import Case, When
 
 def history(request):
+    '''
+    This functions takes the request param for a POST to save songs that have been played before. 
+    param: request
+    return: returns history of songs that have been played
+    '''
     if request.method == "POST":
         user = request.user
         music_id = request.POST['music_id']
@@ -25,6 +30,11 @@ def history(request):
     return render(request, 'mtunes/history.htm', {"history": song})
 
 def watchlater(request):
+    '''
+    This function marks the songs to be watched later. 
+    param: request
+    return: returns a list of songs marked to be watched later. 
+    '''
     if request.method == "POST":
         user = request.user
         video_id = request.POST['video_id']
@@ -54,10 +64,20 @@ def watchlater(request):
     return render(request, "mtunes/watchlater.htm", {'song': song})
 
 def index(request):
+    '''
+    This function returns the homepage.
+    param: request
+    return: returns the index ( homepage )
+    '''
     song = Song.objects.all()
     return render(request, 'index.htm', {'song': song})
 
 def songs(request):
+    '''
+    This function returns a list of songs. 
+    param: request
+    return: returns a list of songs in the catalogue
+    '''
     song = Song.objects.all()
     return render(request, 'mtunes/songs.htm', {'song': song})
 
