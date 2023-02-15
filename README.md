@@ -30,3 +30,11 @@ This is a Django based Music web application. Django administration database adm
 ## Django Admin Dataset of total songs
 <img height = "500" src = "/img/totalsongs.png">
 
+# Creating a virtual environment for the project
+python -m venv my_django
+
+# Setting up the Docker Container
+docker build -t royal-music ./
+docker run -d -p 80:80 royal-music
+
+
